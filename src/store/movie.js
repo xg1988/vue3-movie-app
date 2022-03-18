@@ -3,12 +3,14 @@
 import axios from "axios";
 import _uniqBy from "lodash/uniqBy";
 
+const _defaultMessage = 'Search for the movie title!';
+
 export default{
     namespaced:true,
     //data
     state:()=>({ //mutations에서만 데이터를 수정할 수 있다.
         movies: [],
-        message: 'Search for the movie title!',
+        message: _defaultMessage,
         loading: false,
         theMovie:{}
     }),
@@ -30,6 +32,8 @@ export default{
         },// 통합적인 데이터 변경을 위한 함수
         resetMovies(state){
             state.movies=[];
+            state.message = _defaultMessage;
+            state.loading = false;
         }
     },
     // 비동기로 동작
