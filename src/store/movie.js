@@ -145,3 +145,4 @@ function _fetchMovies(payload){
         })
     });
 }
+
