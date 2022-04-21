@@ -38,6 +38,7 @@ export default{
     },
     // 비동기로 동작
     actions:{
+
         async searchMovies({state, commit}, payload){ //context를 구조분해할당한 commit
             if(state.loading){
                 return;
@@ -58,6 +59,8 @@ export default{
                     ...payload,
                     page:1
                 });
+
+                const res2 = await _fetchCoupangAPI({});
 
                 const {Search, totalResults} = res.data;
                 const uniqSearch = _uniqBy(Search, 'imdbID');
@@ -125,5 +128,10 @@ export default{
 
 async function _fetchMovies(payload){
     return await axios.post('/.netlify/functions/movie', payload);
+}
+
+async function _fetchCoupangAPI(payload){
+    const url = "https://sb-service01.herokuapp.com/api/coupang/goldbox";
+    return await axios.post(url, payload);
 }
 

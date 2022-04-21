@@ -12,6 +12,9 @@ exports.handler = async function(event, context){
             :`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`;
     //const url = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}`; //에러발생 케이스
     console.log("url: "+ url);
+
+    //const url2 = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
+
     try{
         const {data} = await axios.get(url);
 
